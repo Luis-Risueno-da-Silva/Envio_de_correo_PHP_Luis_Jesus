@@ -1,8 +1,16 @@
 <?PHP
+//Estos "use" deben de ir al principio del archivo
+//Si no, no fucniona
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 
+    /*
+     * Hay que especificar la ruta relativa de:
+     *  - Exception.php
+     *  - PHPMailer.php
+     *  - SMTP.php
+     */
     require '../PHPMailer/src/Exception.php';
     require '../PHPMailer/src/PHPMailer.php';
     require '../PHPMailer/src/SMTP.php';
@@ -10,16 +18,18 @@ use PHPMailer\PHPMailer\Exception;
     if(isset($_POST["enviar"])){
         
         try {
-                    /*
-            * Necesitas la vereficación de dos pasos activada.
+            
+            /*
+            * Necesitas la vereficación de dos pasos en el gmail activada.
             * Y la contraseña de aplicación (app password).
             */
 
            $mail = new PHPMailer(true); //Crear objeto de la clase PHPMailer
 
            $mail->isSMTP();
-           $mail->Host = 'smtp.gmail.com'; //Tipo de host, en este caso, gmail
+           $mail->Host = 'smtp.gmail.com'; //Tipo de host: gmail en este caso
            $mail->SMTPAuth = true; //Autentificación activada
+
 
            $mail->Username = 'luisrisuenosilva@gmail.com'; //Tu gmail
            $mail->Password = 'wrepkxsbnmrpdseu'; //Tu contraseña de aplicación de gamil
@@ -28,7 +38,7 @@ use PHPMailer\PHPMailer\Exception;
            $mail->Timeout = 5;
 
 
-           $mail->setFrom('luisrisuenosilva@gmail.com'); //Tu gmail
+           $mail->setFrom('luisrisuenosilva@gmail.com'); //Gmail desde el que se envía el mensaje
 
            $mail->addAddress($_POST['email']); //El email que recibe el correo
 
@@ -36,6 +46,7 @@ use PHPMailer\PHPMailer\Exception;
 
            $mail->Subject = $_POST["asunto"]; //Asunto del mensaje
            $mail->Body = $_POST['cuerpo']; //Cuerpo del mensaje
+           
            
            /*
             * De esta forma, envío el mensaje y el resultado lo guardo en una
