@@ -31,14 +31,14 @@ use PHPMailer\PHPMailer\Exception;
            $mail->SMTPAuth = true; //Autentificación activada
 
 
-           $mail->Username = 'luisrisuenosilva@gmail.com'; //Tu gmail
-           $mail->Password = 'wrepkxsbnmrpdseu'; //Tu contraseña de aplicación de gamil
+           $mail->Username = '-------'; //Tu gmail
+           $mail->Password = '-------'; //Tu contraseña de aplicación de gamil
            $mail->SMTPSecure = 'ssl'; //Tipo de seguridad
            $mail->Port = 465; //Puerto de smtp
            $mail->Timeout = 5;
 
 
-           $mail->setFrom('luisrisuenosilva@gmail.com'); //Gmail desde el que se envía el mensaje
+           $mail->setFrom('--------'); //Gmail desde el que se envía el mensaje
 
            $mail->addAddress($_POST['email']); //El email que recibe el correo
 
